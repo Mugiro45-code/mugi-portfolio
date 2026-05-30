@@ -1,6 +1,11 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
+// Module-scoped reference to the active Lenis instance so other modules can use it.
+let lenisInstance = null
+
+export const getLenis = () => lenisInstance
+
 export const useLenisScroll = () => {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -12,6 +17,8 @@ export const useLenisScroll = () => {
       smoothWheel: true,
       wheelMultiplier: 0.9,
     })
+
+    lenisInstance = lenis
 
     let rafId = 0
 
@@ -25,6 +32,7 @@ export const useLenisScroll = () => {
     return () => {
       window.cancelAnimationFrame(rafId)
       lenis.destroy()
+      lenisInstance = null
     }
   }, [])
 }

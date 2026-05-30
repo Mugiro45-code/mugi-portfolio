@@ -110,7 +110,7 @@ const HeroSection = React.forwardRef(function HeroSection(
               {title}
             </motion.h1>
             <motion.div className="my-6 h-1 w-20 bg-primary" variants={itemVariants} />
-            <motion.p className="mb-8 max-w-md text-base text-muted-foreground" variants={itemVariants}>
+            <motion.p className="mb-8 max-w-lg text-pretty text-base text-muted-foreground" variants={itemVariants}>
               {subtitle}
             </motion.p>
             <motion.div className="flex flex-wrap items-center gap-4" variants={itemVariants}>

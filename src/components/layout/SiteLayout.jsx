@@ -5,6 +5,7 @@ import { FloatingOrbs } from '@/components/animations/FloatingOrbs'
 import { useLenisScroll } from '@/hooks/useLenisScroll'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { useEffect } from 'react'
+import { getLenis } from '@/hooks/useLenisScroll'
 
 export const SiteLayout = () => {
   useLenisScroll()
@@ -12,8 +13,19 @@ export const SiteLayout = () => {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    // Try a smooth scroll to top on route change. If a custom scroller (Lenis) is active
-    // this will still request the browser to move to top; Lenis may intercept for a smooth effect.
+    // If Lenis is active, use its scrollTo for consistent smooth scrolling.
+    const lenis = getLenis()
+    if (lenis && typeof lenis.scrollTo === 'function') {
+      // duration in ms; easing handled by Lenis
+      try {
+        lenis.scrollTo(0, { duration: 600 })
+        return
+      } catch (_) {
+        // fallthrough to window scroll
+      }
+    }
+
+    // Fallback: native smooth scroll
     try {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (e) {
