@@ -33,10 +33,9 @@ export const BottomNavBar = ({ className, defaultIndex = 0, isDark = true }) => 
       role="navigation"
       aria-label="Primary Navigation"
       className={cn(
-        'mx-auto flex w-fit max-w-[95vw] items-center gap-1 rounded-full border px-1.5 py-1.5 shadow-xl backdrop-blur-xl transition-colors duration-300',
-        isDark
-          ? 'border-white/15 bg-white/5 shadow-black/20'
-          : 'border-slate-300/75 bg-white/80 shadow-slate-300/35',
+        // fill available width on small screens for better spacing, center and fit on md+
+        'flex w-full max-w-[95vw] md:w-fit md:mx-auto items-center gap-1 rounded-full border px-1 py-1 shadow-xl backdrop-blur-xl transition-colors duration-300',
+        isDark ? 'border-white/15 bg-white/5 shadow-black/20' : 'border-slate-300/75 bg-white/80 shadow-slate-300/35',
         className,
       )}
     >
@@ -51,7 +50,7 @@ export const BottomNavBar = ({ className, defaultIndex = 0, isDark = true }) => 
             onClick={() => setActiveIndex(idx)}
             className={({ isActive: routeActive }) =>
               cn(
-                'group flex h-10 min-w-[42px] items-center justify-center rounded-full px-3.5 transition-colors duration-200 focus:outline-none focus-visible:ring-0',
+                'group flex h-9 md:h-10 min-w-[42px] items-center justify-center rounded-full px-2 md:px-3.5 transition-colors duration-200 focus:outline-none focus-visible:ring-0',
                 routeActive || isActive
                   ? isDark
                     ? 'bg-white/12 text-white'
@@ -69,7 +68,6 @@ export const BottomNavBar = ({ className, defaultIndex = 0, isDark = true }) => 
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
             >
               <Icon size={20} strokeWidth={2} aria-hidden className="shrink-0 transition-colors duration-200" />
-
               <motion.span
                 initial={false}
                 animate={{
@@ -83,7 +81,8 @@ export const BottomNavBar = ({ className, defaultIndex = 0, isDark = true }) => 
                   marginLeft: { duration: 0.18 },
                 }}
                 className={cn(
-                  'overflow-hidden whitespace-nowrap text-xs font-medium',
+                  // hide labels on small screens for a compact mobile layout
+                  'hidden md:inline-block overflow-hidden whitespace-nowrap text-xs font-medium',
                   isDark ? 'text-white' : 'text-slate-900',
                 )}
               >
