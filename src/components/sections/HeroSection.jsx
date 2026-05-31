@@ -98,7 +98,9 @@ export const HeroSection = () => {
     <SectionShell id="hero" className="!py-0">
       <section
         className="
-          relative w-full min-h-screen flex items-center overflow-hidden
+          relative mx-3 my-3 w-[calc(100%-1.5rem)] min-h-[calc(100vh-1.5rem)] flex items-center overflow-hidden
+          rounded-[12px] border border-black/[.04] dark:border-white/[.05]
+          shadow-[0_30px_100px_rgba(0,0,0,.10)]
           bg-[#f7f6f3] dark:bg-[#0c0c0c]
           transition-colors duration-300
         "
@@ -127,13 +129,13 @@ export const HeroSection = () => {
                         gap-10 md:gap-14 items-center min-h-screen">
 
           {/* ══════════════ LEFT PANEL ══════════════ */}
-          <div className="flex flex-col gap-0 order-2 md:order-1">
+          <div className="flex flex-col gap-0 order-2 md:order-1 rounded-[8px] overflow-hidden border border-black/[.05] dark:border-white/[.06] bg-white/35 dark:bg-white/[.02] backdrop-blur-xl shadow-[0_28px_90px_rgba(0,0,0,.10)]">
 
             {/* Window chrome bar */}
             <div className="
-              flex items-center gap-2 px-4 py-3 rounded-t-xl border-b
-              bg-white/70 dark:bg-white/[.04]
-              border-black/[.07] dark:border-white/[.07]
+              flex items-center gap-2 px-4 py-3 border-b
+              bg-white/55 dark:bg-white/[.035]
+              border-black/[.04] dark:border-white/[.05]
               backdrop-blur-sm
             ">
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
@@ -146,10 +148,9 @@ export const HeroSection = () => {
 
             {/* Main card body */}
             <div className="
-              rounded-b-xl border border-t-0 px-6 pt-7 pb-7
-              bg-white/60 dark:bg-white/[.03]
-              border-black/[.07] dark:border-white/[.07]
-              backdrop-blur-sm
+              border border-t-0 border-transparent px-6 pt-7 pb-7
+              bg-white/48 dark:bg-white/[.02]
+              backdrop-blur-md
             ">
 
               {/* Status line */}
@@ -332,7 +333,7 @@ export const HeroSection = () => {
           <div className="flex flex-col gap-4 order-1 md:order-2">
 
             {/* Photo card */}
-            <div className="relative overflow-hidden rounded-2xl">
+            <div className="relative overflow-hidden rounded-xl mt-3">
 
               {/* Shimmer border */}
               <div
@@ -353,7 +354,7 @@ export const HeroSection = () => {
               />
 
               {/* Photo */}
-              <div className="relative overflow-hidden rounded-2xl bg-[#e8e5de] dark:bg-[#1a1a1a]
+              <div className="relative overflow-hidden rounded-xl bg-[#e8e5de] dark:bg-[#1a1a1a]
                               aspect-[3/4] md:aspect-[4/5]">
                 <img
                   src={heroPic}
@@ -372,7 +373,7 @@ export const HeroSection = () => {
 
             {/* Award badge */}
             <div className="
-              flex items-center gap-3 rounded-xl px-4 py-3
+              flex items-center gap-3 rounded-l px-4 py-3
               border border-amber-400/25 bg-amber-50/70 dark:bg-amber-400/[.06]
               dark:border-amber-400/[.18]
             ">
@@ -389,9 +390,10 @@ export const HeroSection = () => {
 
             {/* Stack pills */}
             <div className="
-              rounded-xl border px-4 py-3
+              rounded-l border px-4 py-3
               border-black/[.07] dark:border-white/[.07]
               bg-white/50 dark:bg-white/[.02]
+              mb-3
             ">
               <p className="mb-2.5 text-[10px] uppercase tracking-[.16em] text-black/30 dark:text-white/25">
                 // tech_stack
